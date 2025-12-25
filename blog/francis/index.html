@@ -177,9 +177,174 @@ flexibility(document.documentElement);
 <link rel="apple-touch-icon" href="/wp-content/uploads/cropped-cropped-cropped-toplogoimage-1-180x180.jpg">
 <meta name="msapplication-TileImage" content="/wp-content/uploads/cropped-cropped-cropped-toplogoimage-1-270x270.jpg">
 		<style id="wp-custom-css">
-			/* ============================================================
-   1. 【追加分】不具合修正（ここだけ新しく追加）
-   ============================================================ */
+			
+/* ===================
+hoka: ぷっくりピンク 似たような話
+====================== */
+
+.hoka {
+  position: relative;
+  margin: 40px 0 16px;
+  padding: 25px 15px 15px;
+  border: 2px solid #ffcdd2; /* 枠線のピンク */
+  background-color: #fffafb; /* 背景の淡いピンク */
+  border-radius: 15px;       /* 角丸でかわいく */
+  box-shadow: 0 4px 0 #ffcdd2; /* 下側の厚みでぷっくり感を演出 */
+  box-sizing: border-box;
+  transition: .3s;
+}
+
+.hoka p:last-child {
+  margin-bottom: 0;
+}
+
+/* ラベル部分 */
+.hoka::before {
+  content: "似たような、ほかのお話もどうぞ"; /* 文言はここ */
+  position: absolute;
+  bottom: 100%;    /* 枠の上に乗せる */
+  left: 10px;      /* 左から少し浮かす */
+  margin-bottom: -2px; /* 枠線と自然につなげる */
+  padding: 4px 18px;
+  background: linear-gradient(#ffffff, #ffecf0); /* 上から白→ピンクのグラデ */
+  color: #e91e63;  /* 文字色：少し濃いめのピンク */
+  font-size: 13px;
+  font-weight: bold;
+  border: 2px solid #ffcdd2;
+  border-bottom: none; /* 下の線だけ消して枠と合体 */
+  border-radius: 12px 12px 0 0; /* 上だけ丸く */
+}
+
+/* ホバー時：沈み込まず、色だけ優しく変化 */
+.hoka:hover {
+  background-color: #ffebee;
+  border-color: #f48fb1;
+}
+
+.hoka:hover::before {
+  background: #ffffff;
+  border-color: #f48fb1;
+  color: #c2185b;
+}
+/* ===================
+more info
+====================== */
+
+.moreinfo {
+position: relative;
+margin: 36px 0 16px;
+padding: 16px 10px;
+border: 2px solid #186ddb;
+background-color: #fffbf5;
+}
+.moreinfo p:last-child {
+margin-bottom: 0;
+}
+.moreinfo:before {
+position: absolute;
+bottom: 100%;
+left: -2px;
+padding: 2px 6px;
+content: "more info";
+background-color: #186ddb;
+color: #fff;
+font-size: 13px;
+font-weight: bold;
+}
+
+/* ===================
+kindle
+====================== */
+.kindlebox {
+position: relative;
+margin: 36px 0 16px;
+padding: 16px 10px;
+border: 2px solid #0099FF;
+background-color: #FFFFEE;
+}
+.kindlebox p:last-child {
+margin-bottom: 0;
+}
+.kindlebox:before {
+position: absolute;
+bottom: 100%;
+left: -2px;
+padding: 2px 6px;
+content: "この旅はエッセイ本にしてみたよ ";
+background-color: #0099FF;
+color: #fff;
+font-size: 13px;
+font-weight: bold;
+}
+
+/* ===================
+cafe info
+====================== */
+
+.cafeinfo {
+position: relative;
+margin: 36px 0 16px;
+padding: 16px 10px;
+border: 2px solid #FF97C2;
+background-color: #FFF0F5;
+}
+.cafeinfo p:last-child {
+margin-bottom: 0;
+}
+.cafeinfo:before {
+position: absolute;
+bottom: 100%;
+left: -2px;
+padding: 2px 6px;
+content: "cafeの記事はこちら";
+background-color: #FF97C2;
+color: #fff;
+font-size: 13px;
+font-weight: bold;
+}
+
+
+/* ===================
+Amazon infoスタイル
+====================== */
+
+.ama {
+  position: relative;
+  margin: 36px 0 16px;
+  padding: 40px 15px 15px; /* 上部にラベル用の余白 */
+  border: 2px solid #b3e5fc; /* 水色の枠線 */
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-sizing: border-box;
+}
+
+/* ラベル部分：ここに文言を書く */
+.ama::before {
+  content: "Amazonで見てみる"; /* ← ここを書き換える */
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 5px 15px;
+  background-color: #b3e5fc;
+  color: #01579b;
+  font-size: 13px;
+  font-weight: bold;
+  border-radius: 8px 0 10px 0;
+  line-height: 1;
+}
+
+/* ホバー設定：浮かない・色変更のみ */
+.ama:hover {
+  background-color: #f1faff;
+  border-color: #81d4fa;
+}
+
+.ama:hover::before {
+  background-color: #81d4fa;
+}
+
+
+/* ===================================================================================================== */
 html, body {
     overflow-x: hidden; /* 右側の余白（横スクロール）を消す */
 }
@@ -197,29 +362,52 @@ img, table, figure {
     min-height: 350px !important; /* 切れる場合はここを調整 */
 }
 
-/* ============================================================
-   2. 【元のコード】あなたのデザインをそのまま復元
+/* ===========================
    ============================================================ */
 .bp-container { max-width: 1100px; margin: 0 auto; padding: 28px 18px; font-family: "Noto Sans JP", "Helvetica Neue", Arial, sans-serif; color: #222; }
 a { color: inherit; text-decoration: none; }
 .bp-row { display:flex; gap:24px; flex-wrap:wrap; }
 .bp-center { text-align:center; }
 
-h3{
-  color: #444; /* 文字を見やすく調整 */
-  background: #ffedf0;
-  margin:1.4em 0;
-  padding: 0.3em 0 0.3em 0.5em;
-  box-shadow: 0 0 0 5px #ffedf0;
-  border: 3px dashed #fffffb;
+/* --- H2: エッセイの主題を包むようなデザイン --- */
+h2 {
+  position: relative;
+  padding: 0.8em 1.2em;
+  background-color: #fff8f9; /* 非常に淡いピンク（紙のような質感） */
+  color: #c2185b;
+  border-left: 5px solid #f48fb1; /* アクセントは細すぎず太すぎず */
+  border-bottom: 1px solid #fce4ec; 
+  border-radius: 2px;
+  margin: 2.5em 0 1.2em;
+  font-size: 1.25em;
+  line-height: 1.6; /* 長文でもゆったり読めるように */
 }
 
-h2 {
-    padding: .5em .7em;
-    border-left: 5px solid #f9d3e0;
-    background-color: #fdf8f6;
-    color: #444444;
+/* --- H3: さりげなく、でも確実な区切り --- */
+h3 {
+  position: relative;
+  padding: 0.5em 0 0.5em 1.2em; /* 左に縦線用の余白 */
+  color: #444;
+  margin: 2em 0 1em;
+  font-size: 1.15em;
+  background: transparent;
+  /* 下線は引かずに、文字の存在感を立たせる */
 }
+
+/* H3の文頭アクセント：やわらかい二重の縦線 */
+h3::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 1.2em;
+  background-color: #f48fb1;
+  box-shadow: 4px 0 0 #ffcdd2; /* 隣に少し薄い色の線を並べて二重線に */
+  border-radius: 3px;
+}
+
 
 .bp-hero { position:relative; border-radius:12px; overflow:hidden; margin-bottom:28px; min-height:320px;
   display:flex; align-items:center; justify-content:center; background:linear-gradient(180deg, #f4fbff 0%, #ffffff 60%); }
@@ -236,7 +424,9 @@ h2 {
 
 .bp-cats { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-bottom:28px; }
 .bp-cat { padding:18px; border-radius:12px; background:#fff; border:1px solid #f0f0f0; box-shadow:0 6px 20px rgba(30,30,30,.03); min-height:140px; display:flex; flex-direction:column; justify-content:space-between; }
-.bp-cat h3 { margin:0 0 8px; font-size:18px; border:none; background:none; box-shadow:none; padding:0; } /* カテゴリ内h3リセット */
+.bp-cat h3 { margin:0 0 8px; font-size:18px; border:none; background:none; box-shadow:none; padding:0; }
+
+/* カテゴリ内h3リセット */
 
 .works-grid {
   display: grid;
@@ -296,7 +486,8 @@ h2 {
 
 @media (max-width:560px){
     .bp-cats, .bp-post-grid { grid-template-columns:1fr; }
-    .works-grid { grid		</style>
+    .works-grid { grid
+					</style>
 		<!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-M1Y4D9TX8Y"></script>
 <script>
@@ -319,7 +510,11 @@ h2 {
 		<div class="ast-above-header-wrap  ">
 		<div class="ast-above-header-bar ast-above-header  site-header-focus-item" data-section="section-above-header-builder">
 						<div class="site-above-header-wrap ast-builder-grid-row-container site-header-focus-item ast-container" data-section="section-above-header-builder">
-				<div class="ast-builder-grid-row ast-grid-center-col-layout-only ast-flex ast-grid-center-col-layout">
+				<div class="ast-builder-grid-row ast-builder-grid-row-has-sides ast-grid-center-col-layout">
+											<div class="site-header-above-section-left site-header-section ast-flex site-header-section-left">
+																	<div class="site-header-above-section-left-center site-header-section ast-flex ast-grid-left-center-section">
+																			</div>
+															</div>
 																		<div class="site-header-above-section-center site-header-section ast-flex ast-grid-section-center">
 										<div class="ast-builder-layout-element ast-flex site-header-focus-item" data-section="title_tagline">
 							<div class="site-branding ast-site-identity" itemtype="https://schema.org/Organization" itemscope="itemscope">
@@ -336,7 +531,34 @@ h2 {
 			<!-- .site-branding -->
 					</div>
 									</div>
-																		</div>
+																			<div class="site-header-above-section-right site-header-section ast-flex ast-grid-right-section">
+																	<div class="site-header-above-section-right-center site-header-section ast-flex ast-grid-right-center-section">
+												<div class="ast-builder-layout-element ast-flex site-header-focus-item ast-header-search" data-section="section-header-search">
+					<div class="ast-search-menu-icon slide-search">
+		<form role="search" method="get" class="search-form" action="/">
+	<label for="search-field">
+		<span class="screen-reader-text">検索対象:</span>
+		<input type="search" id="search-field" class="search-field" placeholder="検索..." value="" name="s" tabindex="-1">
+					<button class="search-submit ast-search-submit" aria-label="検索を送信">
+				<span hidden>検索</span>
+				<i><span class="ast-icon icon-search"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewbox="-893 477 142 142" enable-background="new -888 480 142 142" xml:space="preserve">
+						  <path d="M-787.4,568.7h-6.3l-2.4-2.4c7.9-8.7,12.6-20.5,12.6-33.1c0-28.4-22.9-51.3-51.3-51.3  c-28.4,0-51.3,22.9-51.3,51.3c0,28.4,22.9,51.3,51.3,51.3c12.6,0,24.4-4.7,33.1-12.6l2.4,2.4v6.3l39.4,39.4l11.8-11.8L-787.4,568.7  L-787.4,568.7z M-834.7,568.7c-19.7,0-35.5-15.8-35.5-35.5c0-19.7,15.8-35.5,35.5-35.5c19.7,0,35.5,15.8,35.5,35.5  C-799.3,553-815,568.7-834.7,568.7L-834.7,568.7z"></path>
+						  </svg></span></i>
+			</button>
+			</label>
+	</form>
+			<div class="ast-search-icon">
+				<a class="slide-search astra-search-icon" role="button" tabindex="0" aria-label="検索ボタン" href="#">
+					<span class="screen-reader-text">検索</span>
+					<span class="ast-icon icon-search"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewbox="-893 477 142 142" enable-background="new -888 480 142 142" xml:space="preserve">
+						  <path d="M-787.4,568.7h-6.3l-2.4-2.4c7.9-8.7,12.6-20.5,12.6-33.1c0-28.4-22.9-51.3-51.3-51.3  c-28.4,0-51.3,22.9-51.3,51.3c0,28.4,22.9,51.3,51.3,51.3c12.6,0,24.4-4.7,33.1-12.6l2.4,2.4v6.3l39.4,39.4l11.8-11.8L-787.4,568.7  L-787.4,568.7z M-834.7,568.7c-19.7,0-35.5-15.8-35.5-35.5c0-19.7,15.8-35.5,35.5-35.5c19.7,0,35.5,15.8,35.5,35.5  C-799.3,553-815,568.7-834.7,568.7L-834.7,568.7z"></path>
+						  </svg></span>				</a>
+			</div>
+		</div>
+				</div>
+											</div>
+																</div>
+												</div>
 					</div>
 								</div>
 			</div>
@@ -351,7 +573,7 @@ h2 {
 <li id="menu-item-19719" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-19719"><a href="/blog/category/bearytearoom/" class="menu-link">ティータイム、日常の気づき</a></li>
 <li id="menu-item-19720" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-19720"><a href="/blog/category/our-kindle/" class="menu-link">創作・Kindle作成・パン作り</a></li>
 <li id="menu-item-16014" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-16014"><a href="/futaba-list/" class="menu-link">エッセイ本</a></li>
-<li id="menu-item-5499" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-5499"><a href="/cg/" class="menu-link">CG制作:別サイト</a></li>
+<li id="menu-item-20671" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-20671"><a href="/wasabi-cg/" class="menu-link">CG制作</a></li>
 </ul></div></nav></div></div>		</div>
 									</div>
 																		</div>
@@ -422,7 +644,7 @@ h2 {
 <li class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-19719"><a href="/blog/category/bearytearoom/" class="menu-link">ティータイム、日常の気づき</a></li>
 <li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-19720"><a href="/blog/category/our-kindle/" class="menu-link">創作・Kindle作成・パン作り</a></li>
 <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-16014"><a href="/futaba-list/" class="menu-link">エッセイ本</a></li>
-<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-5499"><a href="/cg/" class="menu-link">CG制作:別サイト</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-20671"><a href="/wasabi-cg/" class="menu-link">CG制作</a></li>
 </ul></div></nav></div></div>		</div>
 					</div>
 			</div>
@@ -486,7 +708,7 @@ h2 {
 
 
 
-<div class="wp-embed"><a href="/blog/tissage/">フォートナム&amp;メイソン スモーキーアールグレイ with tissageのミルフィーユ</a></div>
+<div class="hoka"><a href="/blog/tissage/">フォートナム&amp;メイソン スモーキーアールグレイ with tissageのミルフィーユ</a></div>
 
 
 
@@ -499,11 +721,11 @@ h2 {
 
 
 
-<div class="wp-embed"><a href="/blog/san-cha/">インド紅茶ブランド SAN-CHA サンチャ</a></div>
+<div class="hoka"><a href="/blog/san-cha/">インド紅茶ブランド SAN-CHA サンチャ</a></div>
 
 
 
-<p class="pro"><a href="https://amzn.to/3ZHOTPX" target="_blank" rel="noreferrer noopener">リプトンのアールグレイ</a></p>
+<p class="ama"><a href="https://amzn.to/3ZHOTPX" target="_blank" rel="noreferrer noopener">リプトンのアールグレイ</a></p>
 </div>
 
 
@@ -538,7 +760,7 @@ h2 {
 
 
 
-<div class="wp-embed"><a href="/blog/letao-fro/">アーマッド アールグレイアイスティー with LeTAO 小樽色内通りフロマージュ</a></div>
+<div class="hoka"><a href="/blog/letao-fro/">アーマッド アールグレイアイスティー with LeTAO 小樽色内通りフロマージュ</a></div>
 
 		
 		
@@ -592,13 +814,13 @@ h2 {
 		<h2 class="widget-title">最近の投稿</h2><nav aria-label="最近の投稿">
 		<ul>
 											<li>
-					<a href="/blog/3d-items-buriki/">【昭和レトロ】ブリキロボットのFBX2点セットをつくったよ</a>
+					<a href="/blog/memo-akisyo/">今日のメモ｜飽き性</a>
 									</li>
 											<li>
-					<a href="/blog/memo-1217/">今日のメモ｜本作成</a>
+					<a href="/blog/3d-items-majan/">【昭和レトロ３Dモデル】コタツ麻雀セットつくったよ</a>
 									</li>
 											<li>
-					<a href="/blog/3d-items-washitsu/">【昭和レトロ】和室モデルと小物FBX4点の和室基本セット</a>
+					<a href="/blog/london-tea/">ロンドンで見つけた好きな紅茶ブランド</a>
 									</li>
 					</ul>
 
@@ -606,9 +828,12 @@ h2 {
 <p>こんにちは！運営者のもも乃　双葉です。
 <br>もしよろしければ<a href="/profile/">「ご挨拶」</a>をご覧ください。</p></aside><aside id="block-50" class="widget widget_block"><a href="https://www.amazon.co.jp/stores/author/B09MFDYZDH" target="_blank" style="display: inline-block; white-space: nowrap; background-color: #dff6ff; color: #146eb4; font-size: 18px; padding: 12px 20px; border-radius: 8px; text-decoration: none; font-weight: bold; border: 3px solid #90e0ef;">
 Amazonで著作ページを見る
-</a></aside><aside id="block-54" class="widget widget_block widget_media_image">
-<figure class="wp-block-image size-full is-resized is-style-sydney-rounded"><img loading="lazy" decoding="async" width="1024" height="683" src="/wp-content/uploads/ouen.png" alt="" class="wp-image-20497" style="width:233px;height:auto" srcset="/wp-content/uploads/ouen.png 1024w, /wp-content/uploads/ouen-768x512.png 768w" sizes="auto, (max-width: 1024px) 100vw, 1024px"></figure>
-</aside>
+</a></aside><aside id="block-63" class="widget widget_block"><div class="booth-banner-container">
+    <a href="https://wasabi-works.booth.pm/" target="_blank" rel="noopener noreferrer" class="booth-banner-link">
+        <span class="banner-title">WASABI-WORKS</span>
+        <span class="banner-sub">CG小物 (BOOTH) </span>
+    </a>
+</div></aside>
 	</div><!-- .sidebar-main -->
 </div><!-- #secondary -->
 
